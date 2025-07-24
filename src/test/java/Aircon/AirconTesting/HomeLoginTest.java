@@ -1,4 +1,5 @@
 package Aircon.AirconTesting;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -34,11 +35,10 @@ public class HomeLoginTest {
 
 	@BeforeMethod
 	public void setUp() throws IOException {
-	    ChromeOptions options = new ChromeOptions();
-	    options.addArguments("--headless"); // run in headless mode
-	    driver = new ChromeDriver(options); // use class-level driver
-	    driver.manage().window().maximize();
-	
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless"); // run in headless mode
+		driver = new ChromeDriver(options); // use class-level driver
+		driver.manage().window().maximize();
 
 		fs = new FileInputStream(path);
 		wb = new XSSFWorkbook(fs);
@@ -53,8 +53,11 @@ public class HomeLoginTest {
 			driver.get("https://business.aircontrip.com");
 			Thread.sleep(3000);
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/why-my-partner']//li")));
+			WebElement element = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/why-my-partner']")));
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 			element.click();
+
 			Thread.sleep(2000);
 			String url = driver.getCurrentUrl();
 
@@ -89,7 +92,9 @@ public class HomeLoginTest {
 			driver.get("https://business.aircontrip.com");
 			Thread.sleep(3000);
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/product-highlights']//li")));
+			WebElement element = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/product-highlights']")));
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 			element.click();
 //			driver.findElement(By.xpath("")).click();
 			Thread.sleep(2000);
@@ -232,7 +237,8 @@ public class HomeLoginTest {
 			driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("password");
 			driver.findElement(By.xpath("//button[@type='submit']")).click();
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			WebElement popupElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='status']")));
+			WebElement popupElement = wait
+					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='status']")));
 			String popup = popupElement.getText();
 
 			Cell resultCell = row.createCell(7);
@@ -269,9 +275,10 @@ public class HomeLoginTest {
 			driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("password");
 			driver.findElement(By.xpath("//button[@type='submit']")).click();
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			WebElement popupElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='status']")));
+			WebElement popupElement = wait
+					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='status']")));
 			String popup = popupElement.getText();
-			
+
 			Cell resultCell = row.createCell(7);
 			Cell statusCell = row.createCell(8);
 
