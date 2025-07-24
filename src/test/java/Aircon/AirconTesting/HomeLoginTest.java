@@ -36,7 +36,7 @@ public class HomeLoginTest {
 	@BeforeMethod
 	public void setUp() throws IOException {
 		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless"); // run in headless mode
+//		options.addArguments("--headless"); // run in headless mode
 		driver = new ChromeDriver(options); // use class-level driver
 		driver.manage().window().maximize();
 
@@ -55,7 +55,7 @@ public class HomeLoginTest {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			WebElement element = wait
 					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/why-my-partner']")));
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+//			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 			element.click();
 
 			Thread.sleep(2000);
@@ -94,7 +94,7 @@ public class HomeLoginTest {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			WebElement element = wait
 					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/product-highlights']")));
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+//			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 			element.click();
 //			driver.findElement(By.xpath("")).click();
 			Thread.sleep(2000);
