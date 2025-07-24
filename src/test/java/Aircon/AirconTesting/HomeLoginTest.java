@@ -52,7 +52,9 @@ public class HomeLoginTest {
 		if (cell != null && cell.getStringCellValue().equalsIgnoreCase("TC-01")) {
 			driver.get("https://business.aircontrip.com");
 			Thread.sleep(3000);
-			driver.findElement(By.xpath("//a[@href='/why-my-partner']//li")).click();
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/why-my-partner']//li")));
+			element.click();
 			Thread.sleep(2000);
 			String url = driver.getCurrentUrl();
 
@@ -86,7 +88,10 @@ public class HomeLoginTest {
 		if (cell != null && cell.getStringCellValue().equalsIgnoreCase("TC-02")) {
 			driver.get("https://business.aircontrip.com");
 			Thread.sleep(3000);
-			driver.findElement(By.xpath("//a[@href='/product-highlights']//li")).click();
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/product-highlights']//li")));
+			element.click();
+//			driver.findElement(By.xpath("")).click();
 			Thread.sleep(2000);
 			String url = driver.getCurrentUrl();
 
