@@ -52,7 +52,7 @@ public class HomeLoginTest {
 		if (cell != null && cell.getStringCellValue().equalsIgnoreCase("TC-01")) {
 			driver.get("https://business.aircontrip.com");
 			Thread.sleep(3000);
-			driver.findElement(By.xpath("//a[contains(@href, '/why-my-partner')]")).click();
+			driver.findElement(By.xpath("//a[@href='/why-my-partner']//li")).click();
 			Thread.sleep(2000);
 			String url = driver.getCurrentUrl();
 
@@ -86,7 +86,7 @@ public class HomeLoginTest {
 		if (cell != null && cell.getStringCellValue().equalsIgnoreCase("TC-02")) {
 			driver.get("https://business.aircontrip.com");
 			Thread.sleep(3000);
-			driver.findElement(By.xpath("//a[contains(@href, '/product-highlights')]")).click();
+			driver.findElement(By.xpath("//a[@href='/product-highlights']//li")).click();
 			Thread.sleep(2000);
 			String url = driver.getCurrentUrl();
 
